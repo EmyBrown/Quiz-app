@@ -410,17 +410,15 @@ function generatePDF() {
     const isCorrect = userAnswer === correctAnswer;
     const questionNumber = `Q${index + 1}:`;
     const questionText = `${question.question}`;
-    const answerText = `Your Answer: ${userAnswer} (${
-      isCorrect ? 'Correct' : 'Incorrect'
-    })`;
+    const answerText = `Your Answer: ${userAnswer} (${isCorrect ? 'Correct' : 'Incorrect'})`;
     doc.setFont('helvetica', 'bold');
     doc.text(questionNumber, 20, (yPos += 7));
     doc.setFont('helvetica', 'normal');
     doc.text(`${questionText}`, 30, yPos);
     doc.setTextColor(100, 102, 104);
     
-    if (isCorrect) {
-      doc.setTextColor(0, 128, 0, 0.7); // Green for correct answer
+    if (!isCorrect) {
+      doc.setTextColor(0,255, 0, 0.7); // Green for correct answer
     } else {
       doc.setTextColor(255, 0, 0, 0.7); // Red for incorrect answer
     }
